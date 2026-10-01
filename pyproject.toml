@@ -1,0 +1,27 @@
+[project]
+name = "path-planning-course"
+version = "0.1.0"
+description = "Interactive Jupyter course: path planning, MAPF, and task assignment"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "networkx>=3.2",
+    "jupyter>=1.0",
+    "notebook>=7.0",
+    "ipykernel>=6.29",
+    "anywidget>=0.9",
+    "traitlets>=5.14",
+    "pytest>=8.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["lib*"]
+
+[tool.pytest.ini_options]
+testpaths = ["evals"]
+pythonpath = ["."]
+addopts = "-q"
