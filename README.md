@@ -6,17 +6,27 @@
 
 ## 环境
 
+用 **uv** 同步，另一台电脑会装上 `uv.lock` 里钉死的同一套版本：
+
 ```bash
+git clone https://github.com/vriusc/path-planning-course.git
 cd path-planning-course
+uv sync
+uv run pytest evals/ -q
+uv run jupyter notebook notebooks/00_overview.ipynb
+```
+
+没有 uv 时：
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install numpy networkx jupyter notebook ipykernel anywidget traitlets pytest
-# 或: pip install -e .   （只打包 lib/）
+pip install -e .
 python -m pytest evals/ -q
 jupyter notebook notebooks/00_overview.ipynb
 ```
 
-依赖：`numpy` `networkx` `jupyter` `notebook` `ipykernel` `anywidget` `traitlets` `pytest`。匈牙利算法是自实现的，不需要 SciPy。
+依赖：`numpy` `networkx` `jupyter` `notebook` `ipykernel` `anywidget` `traitlets` `pytest`。匈牙利算法是自实现的，不需要 SciPy。改过 `pyproject.toml` 后在本机跑 `uv lock`，再把 `uv.lock` 提交、推送。
 
 调度台用 **anywidget + Canvas**。若控件是空白：
 
